@@ -1,0 +1,12 @@
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\bin\Debug\BubbleShooter.exe
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\bin\Debug\BubbleShooter.exe.config
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.csproj.AssemblyReference.cache
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.OknoLestvica.resources
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.OknoIgra.resources
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.OknoVpis.resources
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.Properties.Resources.resources
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.csproj.GenerateResource.cache
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.csproj.CoreCompileInputs.cache
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.exe
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\obj\Debug\BubbleShooter.pdb
+F:\Users\Miha\Documents\Faks\Programiranje3\BubbleShooter\BubbleShooter\bin\Debug\BubbleShooter.pdb
