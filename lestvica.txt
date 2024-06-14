@@ -1,0 +1,5 @@
+Jaka;730
+Peter;560
+Janez;330
+Petra;120
+Miha;120
