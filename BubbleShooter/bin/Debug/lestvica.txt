@@ -1,5 +1,9 @@
-Jaka;730
-Peter;560
+Jaka;720
+Peter;570
+Miha2;400
 Janez;330
+Jakob;320
 Petra;120
 Miha;120
+Stefan;60
+Franci;30

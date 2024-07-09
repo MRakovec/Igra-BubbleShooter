@@ -24,9 +24,13 @@ namespace BubbleShooter
         private int naslovFontVelikost;
         private int fontVelikost;
 
+        private HashSet<string> zasedeniVzdevki;
+
         public OknoVpis()
         {
             InitializeComponent();
+
+            zasedeniVzdevki = OknoLestvica.VzdevkiVLestvici();
 
             // velikost pisave
             fontVelikost = (int)(this.ClientSize.Height / 20);
@@ -96,14 +100,23 @@ namespace BubbleShooter
             string vnos = besedilnoPoljeVzdevek.Text;
 
             // preveri, da vzdevek vsebuje le črke in številke
-            if ((vnos.Any(char.IsLetter) && vnos.All(char.IsLetterOrDigit)))
+            if (!(vnos.Any(char.IsLetter) && vnos.All(char.IsLetterOrDigit)))
             {
-                Vzdevek = vnos;
-                Program.pozeniOknoIgra();
+                MessageBox.Show("Nepravilni vzdevek.\nVzdevek mora vsebovati samo črke in številke, ter vsaj eno črko.", "Nepravilen vzdevek");
+            }
+            else if (zasedeniVzdevki.Contains(vnos))
+            {
+                DialogResult izbira = MessageBox.Show("Ta vzdevek je že zaseden. Ali vseeno želite igrati s tem vzdevkom?", "Zaseden vzdevek", MessageBoxButtons.YesNo);
+                if (izbira == DialogResult.Yes)
+                {
+                    Vzdevek = vnos;
+                    Program.pozeniOknoIgra();
+                }
             }
             else
-            {               
-                MessageBox.Show("Nepravilni vzdevek.\nVzdevek mora vsebovati samo črke in številke, ter vsaj eno črko.");               
+            {
+                Vzdevek = vnos;
+                Program.pozeniOknoIgra();              
             }
         }
 

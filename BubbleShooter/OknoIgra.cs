@@ -12,7 +12,7 @@ namespace BubbleShooter
         private static int stVrstic = 20;
         private static int stStolpcev = 15;
         private static int stVrsticZacetek = 10;
-        public Mehurcek[,] mrezaMehurckov = new Mehurcek[stVrstic, stStolpcev];
+        private Mehurcek[,] mrezaMehurckov;
         private Random random = new Random();
 
         // Animacija Brisanja in Padanja Mehurčkov
@@ -63,10 +63,14 @@ namespace BubbleShooter
         private int stevecStrelov = 0;
         private int maxSteviloStrelov = 10;
         Timer timerCakaj;
+        Timer timerDodatneVrstice;
+        private int hitrostDodajanjaVrstic = 20000;
 
         public OknoIgra()
         {
             InitializeComponent();
+
+            mrezaMehurckov = new Mehurcek[stVrstic, stStolpcev];
 
             // risanje mehurčkov
             NapolniMrezoMehurckov();
@@ -91,12 +95,17 @@ namespace BubbleShooter
 
             timerStrela = new Timer();
             timerStrela.Interval = hitrostAnimacijeStrela;
-            timerStrela.Tick += TimerStrela_Tick;
+            timerStrela.Tick += timerStrela_Tick;
 
             // dodajanje vrstic
             timerCakaj = new Timer();
             timerCakaj.Interval = 100;
             timerCakaj.Tick += timerCakaj_Tick;
+
+            timerDodatneVrstice = new Timer();
+            timerDodatneVrstice.Interval = hitrostDodajanjaVrstic;
+            timerDodatneVrstice.Tick += timerDodatneVrstice_Tick;
+            timerDodatneVrstice.Start();
 
             // gumbi in napisi
             fontVelikost = (int)(Mehurcek.velikostMehurcka / 3);
@@ -505,7 +514,7 @@ namespace BubbleShooter
             polozajMiskeY = miska.Y;
         }
 
-        private void TimerStrela_Tick(object sender, EventArgs e)
+        private void timerStrela_Tick(object sender, EventArgs e)
         {
             streljanMehurcekSredisceX += smerStrelaX;
             streljanMehurcekSredisceY += smerStrelaY;
@@ -648,6 +657,16 @@ namespace BubbleShooter
             this.Refresh();
         }
 
+        private void timerDodatneVrstice_Tick(object sender, EventArgs e)
+        {
+            // na vsak tick (20 sekund) dodaj vrstico
+            DodajVrstico();
+            // ko dodamo vrstico ponastavimo strele
+            stevecStrelov = 0;
+
+            this.Refresh();
+        }
+
         /// <summary>
         /// požene timer, ki počaka da se prenehajo izvajati vse animacije, in nato doda novo vrstico
         /// </summary>
@@ -662,17 +681,29 @@ namespace BubbleShooter
             if (!seDogajaPremik())
             {
                 timerCakaj.Stop();
-                DodajVrstico();
+                if (aliTrebaDodatiVrstico()) DodajVrstico();
             }
             this.Refresh();
         }
 
-        private void DodajVrstico()
+        private bool aliTrebaDodatiVrstico()
         {
             // ali je treba dodati vrstico
-            if (stevecStrelov < maxSteviloStrelov) return;
-            else stevecStrelov = 0;
+            if (stevecStrelov < maxSteviloStrelov)
+            {
+                return false;
+            }
+            else
+            {
+                stevecStrelov = 0;
+                timerDodatneVrstice.Stop();
+                timerDodatneVrstice.Start();
+                return true;
+            }
+        }
 
+        private void DodajVrstico()
+        {        
             // vse prepisi eno vrstico nizje
             for (int i = stVrstic - 1; i > 1; i--)
             {

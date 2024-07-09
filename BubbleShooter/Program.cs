@@ -53,5 +53,15 @@ namespace BubbleShooter
             lestvica = new OknoLestvica();
             lestvica.Show();
         }
+
+        /// <summary>
+        /// skrije lestvico in ustvari novo okno igra
+        /// </summary>
+        public static void ponovnoPozeniOknoIgra()
+        {
+            lestvica.Hide();
+            igra = new OknoIgra();
+            igra.Show();
+        }
     }
 }
