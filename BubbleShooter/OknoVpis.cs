@@ -100,9 +100,9 @@ namespace BubbleShooter
             string vnos = besedilnoPoljeVzdevek.Text;
 
             // preveri, da vzdevek vsebuje le črke in številke
-            if (!(vnos.Any(char.IsLetter) && vnos.All(char.IsLetterOrDigit)))
+            if (!(vnos.Any(char.IsLetter) && vnos.All(char.IsLetterOrDigit)) || vnos.Length >= 15)
             {
-                MessageBox.Show("Nepravilni vzdevek.\nVzdevek mora vsebovati samo črke in številke, ter vsaj eno črko.", "Nepravilen vzdevek");
+                MessageBox.Show("Nepravilni vzdevek.\nVzdevek mora vsebovati samo črke in številke, ter vsaj eno črko. Vzdevek ima lahko največ 15 znakov.", "Nepravilen vzdevek");
             }
             else if (zasedeniVzdevki.Contains(vnos))
             {
